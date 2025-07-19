@@ -3,30 +3,16 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Order order1 = new Order(1, "Sushi", 10, 845);
-        Order order2 = new Order(2, "Beer", 4, 614);
-        Order order3 = new Order(3, "Chips", 2, 96);
+        List<Order> allOrders = new ArrayList<>();
+        allOrders.add(new Order(1, "Sushi", 10, 845));
+        allOrders.add(new Order(2, "Beer", 4, 614));
+        allOrders.add(new Order(3, "Chips", 2, 96));
+        allOrders.add(new OnlineOrder(4, "Pizza Margarita", 2, 2100, 180));
+        allOrders.add(new OnlineOrder(5, "Pizza Pepperoni", 1, 1120, 180));
 
-        OnlineOrder onlineOrder1 = new OnlineOrder(1, "Pizza Margarita", 2, 2100, 180);
-        OnlineOrder onlineOrder2 = new OnlineOrder(2, "Pizza Pepperoni", 1, 1120, 180);
-
-        List<Order> lstOrders = new ArrayList<>();
-        lstOrders.add(order1);
-        lstOrders.add(order2);
-        lstOrders.add(order3);
-
-        List<OnlineOrder> lstOnlineOrders = new ArrayList<>();
-        lstOnlineOrders.add(onlineOrder1);
-        lstOnlineOrders.add(onlineOrder2);
-
-        for (Order order : lstOrders) {
+        for (Order order: allOrders) {
             order.printDetails();
             System.out.printf("Total price of the order is %s%n%n", order.getTotalPrice());
-        }
-
-        for (OnlineOrder onlineOrder : lstOnlineOrders) {
-            onlineOrder.printDetails();
-            System.out.printf("Total price if the online order is %s%n%n", onlineOrder.getTotalPrice());
         }
     }
 }
@@ -75,7 +61,7 @@ class OnlineOrder extends Order {
 
     @Override
     int getTotalPrice() {
-        return quantity * price + deliveryFree;
+        return super.getTotalPrice() + deliveryFree;
     }
 }
 
