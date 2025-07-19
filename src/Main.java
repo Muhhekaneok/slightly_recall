@@ -11,8 +11,8 @@ public class Main {
         allOrders.add(new OnlineOrder(5, "Pizza Pepperoni", 1, 1120, 180));
 
         for (Order order: allOrders) {
-            order.printDetails();
-            System.out.printf("Total price of the order is %s%n%n", order.getTotalPrice());
+            System.out.printf("Detail info: %s", order.printDetails());
+            System.out.printf("Total price of the order: %s%n%n", order.getTotalPrice());
         }
     }
 }
@@ -35,8 +35,8 @@ class Order implements Printable {
     }
 
     @Override
-    public void printDetails() {
-        System.out.printf(
+    public String printDetails() {
+        return String.format(
                 "Product id is %s, product name is %s, price is %s, quantity is %s%n",
                 id, productName, price, quantity
         );
@@ -52,8 +52,8 @@ class OnlineOrder extends Order {
     }
 
     @Override
-    public void printDetails() {
-        System.out.printf(
+    public String printDetails() {
+        return String.format(
                 "Product id is %s, product name is %s, price is %s, quantity is %s, delivery fee is %s%n",
                 id, productName, price, quantity, deliveryFree
         );
@@ -66,5 +66,5 @@ class OnlineOrder extends Order {
 }
 
 interface Printable {
-    void printDetails();
+    String printDetails();
 }
