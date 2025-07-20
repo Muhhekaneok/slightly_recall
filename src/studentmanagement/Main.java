@@ -24,10 +24,10 @@ public class Main {
 
 
         System.out.printf("\nAverage grade of all student: %.2f",
-        studentList.stream()
-                .mapToInt(s -> s.grade)
-                .average()
-                .orElse(0)
+                studentList.stream()
+                        .mapToInt(s -> s.grade)
+                        .average()
+                        .orElse(0)
         );
     }
 }
